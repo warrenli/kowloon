@@ -1,0 +1,9 @@
+[submodule "vendor/plugins/authlogic"]
+	path = vendor/plugins/authlogic
+	url = git://github.com/binarylogic/authlogic.git
+[submodule "vendor/plugins/i18n_label"]
+	path = vendor/plugins/i18n_label
+	url = git://github.com/iain/i18n_label.git
+[submodule "vendor/plugins/machinist"]
+	path = vendor/plugins/machinist
+	url = git://github.com/notahat/machinist.git

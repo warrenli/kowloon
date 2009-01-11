@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+admin:
+  id: 1
+  login: admin
+  crypted_password: d7788c0bf198625918f7a46f32065ded95ea17e664aa379659fc3399eb093bba08c1699732d99ce9d08c57f52d2908d59062b57a7c3597cbf102ded9f91e59d9
+  password_salt: 5f4fb2dfe031588a3f100a177e2a73a90dd077322bc0396921b31dbdecc431fd0c175b2dd476e60e15046257a96595a95d262b296fa7904e8e5b9ed45b907384
+  persistence_token: ec726e3277b33e8a11bb16a0162df0b69a2a03418542122a2a63c5dbaf02a1a967b041280badf579da8efced8d924693f91c0e2edb56b0e06fb59f9192b7b3ce
+  perishable_token: ciJQ3kopqEEhDZxF5StT
+  login_count:      1
+  email:            admin@example.com
+  active:           true
+  last_request_at:  <%= 1.days.ago.to_s :db %>
+  last_login_at:    <%= 1.days.ago.to_s :db %>
+  current_login_at: <%= 1.days.ago.to_s :db %>
+  last_login_ip:    127.0.0.1
+  current_login_ip: 127.0.0.1
+  created_at:       <%= 5.days.ago.to_s :db %>
+  updated_at:       <%= 1.days.ago.to_s :db %>
+

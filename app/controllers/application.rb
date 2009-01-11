@@ -1,0 +1,81 @@
+# Filters added to this controller apply to all controllers in the application.
+# Likewise, all the methods added will be available for all controllers.
+
+class ApplicationController < ActionController::Base
+  helper :all
+  protect_from_forgery  :secret => 'd66f2151a3c38cae0424ca278cd2d6ab'
+  helper_method :current_user_session, :current_user
+  filter_parameter_logging :password, :password_confirmation
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+
+  before_filter :set_locale
+  before_filter :set_meta_data
+
+  private
+    def current_user_session
+      return @current_user_session if defined?(@current_user_session)
+      @current_user_session = UserSession.find
+    end
+
+    def current_user
+      return @current_user if defined?(@current_user)
+      @current_user = current_user_session && current_user_session.record
+    end
+
+    def require_user
+      unless current_user
+        store_location
+        flash[:notice] = t("application.require_user.warning_msg")
+        redirect_to new_user_session_url
+        return false
+      end
+    end
+
+    def require_no_user
+      if current_user
+        store_location
+        flash[:notice] = t("application.require_no_user.warning_msg")
+        redirect_to account_url
+        return false
+      end
+    end
+
+    def store_location
+      session[:return_to] = request.request_uri
+    end
+
+    def redirect_back_or_default(default)
+      redirect_to(session[:return_to] || default)
+      session[:return_to] = nil
+    end
+
+    def set_locale
+      # update session if passed
+      # session[:locale] = params[:locale] if params[:locale]
+      new_locale = extract_locale_from_params
+      session[:locale] = new_locale if new_locale
+
+      # set locale based on session or default
+      I18n.locale = session[:locale] || I18n.default_locale
+      logger.debug "Locale set to '#{I18n.locale}'"
+    end
+
+    def extract_locale_from_params
+      (AVAILABLE_LOCALES.include? params[:locale]) ? params[:locale]  : nil
+    end
+
+    def set_meta_data
+      @meta_keywords = "ruby, rails, kowloon, authlogic"
+      @meta_description = "Ruby on Rails application"
+    end
+
+#   before_filter :setup_mailer_defaults
+#   def setup_mailer_defaults
+#     ActionMailer::Base.default_url_options[:host] = request.host_with_port
+#   end
+
+    # Automatically respond with 404 for ActiveRecord::RecordNotFound
+    def record_not_found
+      render :file => File.join(RAILS_ROOT, 'public', '404.html'), :status => 404
+    end
+end

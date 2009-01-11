@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title><%= h(yield(:title) || "Kowloon") %></title>
+  <meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
+  <link rel="icon" href="/images/favicon.ico" type="image/png" />
+  <meta name="keywords" content="<%= h @meta_keywords.gsub(/<\/?[^>]*>/, "") %>" />
+  <meta name="description" content="<%= h @meta_description.gsub(/<\/?[^>]*>/, "") %>" />
+  <!-- Framework CSS -->
+  <%= stylesheet_link_tag 'blueprint/screen', :media => "screen, projection" %>
+  <%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
+  <!-- Import fancy-type plugin. -->
+  <% # = stylesheet_link_tag 'blueprint/plugins/fancy-type/screen', :media => "screen, projection" %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag :defaults %>
+  <!-- additional head elements -->
+  <%= yield :head %>
+</head>
+<body>
+<div id="container" class="container showgrid">
+  <div id="super_header" class="span-24 last language_bar">
+    <%= locale_link("en-US", "English") %> | <%= locale_link("zh-HK", "中文") %>&nbsp;
+  </div>
+  <div id="header_title" class="span-24 last">
+     <span class="prepend-1"><%= t 'app.site_title' %></span>
+  </div>
+  <div id="header_subtitle" class="span-24 last">
+     <span class="prepend-2"><%= t 'app.site_subtitle' %></span>
+  </div>
+  <div class="span-24 last menu_bar">
+    <span style="float: right">
+    <% if !current_user %>
+      <%= link_to_unless_current t('app.menu.register'), new_account_path %> |
+      <%= link_to_unless_current t('app.menu.login'), new_user_session_path %> |
+      <%= link_to t('app.menu.forgot_password'), new_password_reset_path %>
+    <% else %>
+      <%= link_to_unless_current t('app.menu.my_account'), account_path %> |
+      <%= link_to_unless_current t('app.menu.logout'), user_session_path, :method => :delete, 
+              :confirm => t('app.menu.logout_confirm') %>
+    <% end %>
+    </span>
+    &nbsp;
+  </div>
+  <hr />
+
+  <div class="span-4">&nbsp;
+  <!-- First column here -->
+  </div>
+  <div id="main_body" class="span-16">
+    <%- if show_title? -%>
+    <h1><%=h yield(:title) %></h1>
+    <%- end -%>
+    <%= flash_messages %>
+    <%= yield :layout %>
+  </div>
+  <div class="span-4 last">&nbsp;
+   <!-- Third column here -->
+   </div>
+  <div id="footer" class="span-24 last">
+    <p>Copyright &copy; 2008 dontrush.org</p>
+  </div>
+
+  <!-- Debug information -->
+  <% if ENV["RAILS_ENV"] == "development" %>
+  <div id="debug" class="span-24 last">
+    <a href="#" onclick="Element.toggle('params_debug_info');return false">params</a> |
+    <a href="#" onclick="Element.toggle('session_debug_info');return false">session</a> |
+    <a href="#" onclick="Element.toggle('env_debug_info');return false">env</a> |
+    <a href="#" onclick="Element.toggle('request_debug_info');return false">request</a>
+
+    <fieldset id="params_debug_info" class="debug_info" style="display:none">
+      <legend>params</legend>
+      <%= debug(params) %>
+    </fieldset>
+    <fieldset id="session_debug_info" class="debug_info" style="display:none">
+      <legend>session</legend>
+      <%= debug(session) %>
+    </fieldset>
+    <fieldset id="env_debug_info" class="debug_info" style="display: none">
+      <legend>env</legend>
+      <%= debug(request.env) %>
+    </fieldset>
+    <fieldset id="request_debug_info" class="debug_info" style="display: none">
+      <legend>request</legend>
+      <%= debug(request) %>
+    </fieldset>
+
+  </div>
+  <% end %>
+  <!-- Debug informatin end -->
+
+</div>
+<!-- additional elements e.g. javascript -->
+<%= yield :foot %>
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+<% title t("users.show.page_title") %>
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("login") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.login %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("active") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.active.to_s %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("email") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.email %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("login_count") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.login_count %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("last_request_at") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.last_request_at %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("last_login_at") %>:</b>
+</div>
+<div class="span-12 last"><%=h @user.last_login_at || "Never" %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("current_login_at") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.current_login_at %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("last_login_ip") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.last_login_ip  || "Never" %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("current_login_ip") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.current_login_ip %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("crypted_password") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.crypted_password %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("password_salt") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.password_salt %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("persistence_token") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.persistence_token %>
+</div>
+
+<div class="span-16 last">
+<%= link_to t('users.show.edit_link'), edit_account_path %>
+</div>

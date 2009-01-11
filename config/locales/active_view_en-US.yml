@@ -1,0 +1,70 @@
+en-US:
+  #
+  # Layout_name:
+  #   text:
+  #
+  app:
+    site_title: "Site Title"
+    site_subtitle: "Site Subtitle"
+    menu:
+      register: "Register"
+      login: "Login"
+      forgot_password: "Forgot password"
+      my_account: "My Account"
+      logout: "Logout"
+      logout_confirm: "Are you sure you want to logout?"
+  #
+  # Controller:
+  #   Action/View:
+  #     text:
+  #
+  application:
+    require_user:
+      warning_msg: "You must be logged in to access this page"
+    require_no_user:
+      warning_msg: "You must be logged out to access this page"
+  activations:
+    new:
+      page_title: "Activate My Account"
+      activate_button: "Activate my account"
+    create:
+      success_msg: "Your account has been activated."
+  user_sessions:
+    new:
+      page_title: "Login"
+      login_button: "Login"
+    create:
+      success_msg: "Login successful!"
+    destroy:
+      success_msg: "Logout successful!"
+  users:
+    new:
+      page_title: "Register"
+      register_button: "Register"
+    create:
+      success_msg: "Your account has been created. Please check your e-mail for your account activation instructions!"
+    show:
+      page_title: "My Account"
+      edit_link: "Edit"
+    edit:
+      page_title: "Edit My Account"
+      new_password: "New Password"
+      update_button: "Update"
+      my_account_link: "My Account"
+    update:
+      success_msg: "Account updated!"
+  password_resets:
+    new:
+      page_title: "Forgot Password"
+      instruction: "Fill out the form below and instructions to reset your password will be emailed to you:"
+      email_label: "Email"
+      submit_button: "Reset my password"
+    create:
+      success_msg: "Instructions to reset your password have been emailed to you. Please check your email."
+      failed_msg: "No user was found with that email address {{your_email}}"
+    edit:
+      page_title: "Change My Password"
+      update_button: "Update my password and log me in"
+    update:
+      success_msg: "Password successfully updated"
+      failed_msg: "Password missing"

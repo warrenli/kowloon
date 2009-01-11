@@ -1,0 +1,70 @@
+zh-HK:
+  #
+  # Layout_name:
+  #   text:
+  #
+  app:
+    site_title: "Site Title"
+    site_subtitle: "Site Subtitle"
+    menu:
+      register: "登記"
+      login: "登入"
+      forgot_password: "忘記密碼"
+      my_account: "我的帳戶"
+      logout: "登出"
+      logout_confirm: "您確定要登出?"
+  #
+  # Controller:
+  #   Action/View:
+  #     text:
+  #
+  application:
+    require_user:
+      warning_msg: "請先登入"
+    require_no_user:
+      warning_msg: "請先登出"
+  activations:
+    new:
+      page_title: "啟動我的帳戶"
+      activate_button: "啟動我的帳戶"
+    create:
+      success_msg: "您的帳戶經已啟動。"
+  user_sessions:
+    new:
+      page_title: "登入"
+      login_button: "登入"
+    create:
+      success_msg: "成功登入!"
+    destroy:
+      success_msg: "成功登出!"
+  users:
+    new:
+      page_title: "登記"
+      register_button: "登記"
+    create:
+      success_msg: "帳戶已成功登記。有關帳戶的啟動方法經已用電子郵件通知您，請查閱您的電子郵箱。"
+    show:
+      page_title: "我的帳戶"
+      edit_link: "更新"
+    edit:
+      page_title: "修改帳戶資料"
+      new_password: "新密碼"
+      update_button: "更新"
+      my_account_link: "我的帳戶"
+    update:
+      success_msg: "帳戶已成功更新!"
+  password_resets:
+    new:
+      page_title: "忘記密碼"
+      instruction: "請輸入您的電郵地址，以便將重置密碼的方法寄給您:"
+      email_label: "電郵地址"
+      submit_button: "重置密碼"
+    create:
+      success_msg: "有關重置密碼的方法經已用電子郵件通知您，請查閱您的電子郵箱。"
+      failed_msg: "找不到帳戶使用這個電郵地址 {{your_email}}"
+    edit:
+      page_title: "更改密碼"
+      update_button: "更改密碼並且登入"
+    update:
+      success_msg: "成功更改密碼"
+      failed_msg: "未有輸入密碼"

@@ -1,0 +1,15 @@
+*.sqlite3
+config/initializers/action_mailer_settings.rb
+config/deploy.rb
+db/schema.rb
+config/database.yml
+config/locomotive.yml
+config/mongrel_cluster.yml
+config/thin.yml
+tmp/**/*
+log/*.log
+private/images/*
+public/cache/*
+coverage/*
+.DS_Store
+

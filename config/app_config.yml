@@ -1,0 +1,12 @@
+development:
+  host: "localhost:3000"
+  admin_email: "Kowloon Notifier <noreply@kowloon.com>"
+
+test:
+  host: "localhost:3000"
+  admin_email: "Kowloon Notifier <noreply@kowloon.com>"
+
+production:
+  host: "www.kowloon.com"
+  admin_email: "Kowloon Notifier <noreply@kowloon.com>"
+

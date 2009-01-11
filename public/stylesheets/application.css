@@ -1,0 +1,148 @@
+body {background-color:#666666;}
+#container {
+ border: 1px solid #CCFF00;
+ background-color: #F0F0F5;
+}
+#header_title {
+ color: #CCFF00;
+ background-color: #CC3333;
+ font-style: italic;
+ font-size: 3em;
+ margin: 0;
+ padding: 5px 0px;
+}
+#header_subtitle {
+ color: #CCFF00;
+ background-color: #CC3333;
+ font-style: italic;
+ font-size: 2em;
+ margin: 0;
+ padding: 5px 0px;
+}
+#main_body {
+ min-height:300px; height: auto !important; height: 300px;
+}
+#footer {
+ color: black;
+ background-color: #E6E6EB;
+ text-align: center;
+ margin: 0;
+ padding: 15px 0px 0px 0px;
+}
+.language_bar {
+ color: #CCFF00;
+ background-color: maroon;
+ text-align: right;
+ margin: 0;
+ padding: 5px 0px;
+}
+.language_bar a {
+ color: #CCFF00;
+ font-weight: bold;
+ margin: 0;
+ padding:1ex 1.5ex;
+}
+.language_bar a:hover {
+ color: white;
+ background-color: #CC3333;
+ padding-top:1ex;
+}
+.menu_bar {
+ color: #CC3333;
+ background-color: #CCFF00;
+ text-decoration: none;
+ font-weight: bold;
+ font-size: 109%;
+ /*text-align: center; */
+ margin: 0;
+ padding: 5px 0px;
+}
+.menu_bar a {
+ color: #666699;
+ background-color: #CCFF00;
+ text-decoration: none;
+ font-weight: bold;
+ margin: 0;
+ padding:1ex 1.5ex;
+}
+.menu_bar a:hover {
+ color: white;
+ background-color: #666699;
+}
+
+/* === FLASH MESSAGES === */
+div#flash-notice {
+ color: #333;
+ border: solid 1px #bd7;
+ padding: 1em;
+ margin: 1em;
+ margin-bottom: 2em;
+ background-color: #efe;
+}
+div#flash-warning {
+ padding: 0 0 0 25px;
+}
+div#flash-error {
+ color: red;
+ border: 1px solid red;
+ padding: 1em;
+ margin: 1em;
+ margin-bottom: 2em;
+ background-color: #efe;
+}
+
+/* === ERROR MESSAGES === */
+#errorExplanation {
+ border: 2px solid red;
+ padding: 7px;
+ padding-bottom: 12px;
+ margin-bottom: 20px;
+ background-color: #f0f0f0;
+}
+#errorExplanation h2 {
+ text-align: left;
+ font-weight: bold;
+ padding: 5px 5px 5px 15px;
+ font-size: 12pt;
+ margin: -7px;
+ background-color: #c00;
+ color: #fff;
+}
+#errorExplanation p {
+ color: #333;
+ margin-bottom: 0;
+ padding: 5px;
+}
+#errorExplanation ul {
+}
+#errorExplanation ul li {
+ font-size: 11pt;
+ list-style: square;
+}
+
+/* Debug Style */
+#debug {
+ margin: 0.5em 1em;
+ /*margin-left: auto;*/
+}
+#debug a, #debug a.visited {
+ text-decoration: none;
+ color: maroon;
+}
+fieldset.debug_info {
+ text-align: left;
+ margin: 1em;
+ font-size: 0.9em;
+ margin: 1em 0;
+ padding: 1.2em;
+ padding-top: 0.4em;
+ background: #eee;
+ border: 1px solid #AAAAAA;
+}
+fieldset.debug_info legend {
+ color: #666699;
+ font-size: 1.4em;
+ padding: .4em 1em;
+ background: #ddd;
+ border: 1px solid #ddd;
+}

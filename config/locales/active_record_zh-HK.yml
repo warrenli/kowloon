@@ -1,0 +1,96 @@
+zh-HK:
+  authlogic:
+    user:
+      login_invalid: "不符合格式"
+      email_invalid: "不符合格式"
+    user_session:
+      login_blank: "不可以留空"
+      login_not_found: "找不到有關帳戶"
+      not_active: "您的帳戶未啟動"
+      not_approved: "您的帳戶未核準"
+      not_confirmed: "您的帳戶未確認"
+      password_blank: "不可以留空"
+      password_invalid: "不符合要求"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "共有{{count}}個錯誤導致“{{model}}”無法被保存"
+          other: "共有{{count}}個錯誤導致“{{model}}”無法被保存"
+        # The variable :count is also available
+        body: "下面的字段出現錯誤："
+      messages:
+        inclusion: "沒有包含在本列表中"
+        exclusion: "是保留關鍵字"
+        invalid: "無效"
+        confirmation: "與確認輸入的內容不一致"
+        accepted: "必須被接受"
+        empty: "不能留空"
+        blank: "不能留空"
+        too_long: "超出長度範圍了(最多允許{{count}}個字符)"
+        too_short: "太短了 (不能少於{{count}}個字符)"
+        wrong_length: "長度錯誤 (應當包含{{count}}個字符)"
+        taken: "已經被使用了"
+        not_a_number: "不是數字"
+        greater_than: "必須大於"
+        greater_than_or_equal_to: "必須大於等於"
+        equal_to: "必須等於"
+        less_than: "必須小於"
+        less_than_or_equal_to: "必須小於等於"
+        odd: "必須是奇數"
+        even: "必須是偶數"
+        # Append your own errors here or at the model/attributes scope.
+        #  msg_login_bad: "請使用英文字母、數字或 . - _ @"
+        #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
+        #  msg_email_bad: "請使用正確電郵"
+        #  msg_email_invalid: "電郵地址無效"
+
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      #   models:
+      #     user:
+      #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      #       attributes:
+      #         login:
+      #           blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and 
+      # custom blank validation message for login attribute of User model.
+      models:
+        
+    # Translate model names. Used in Model.human_name().
+      # For example,
+      #   user: "Dude"
+      # will translate User model name to "Dude"
+    models:
+      user:
+        one: "帳戶"
+        other: "帳戶"
+      "user session":
+        one: "登入 時段"
+        other: "登入 時段"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+      # For example,
+      #   user:
+      #     login: "Handle"
+      # will translate User attribute "login" as "Handle"
+    attributes:
+      user:
+        login: "帳戶名稱"
+        email: "電郵地址"
+        password: "帳戶密碼"
+        password_confirmation: "確認密碼"
+        crypted_password: "Crypted Password"
+        password_salt: "Password Salt"
+        persistence_token: "Persistence Token"
+        login_count: "Login Count"
+        perishable_token: "Perishable_token"
+        active: "已啟動?"
+        last_request_at: "Last Request At"
+        last_login_at: "Last Login At"
+        current_login_at: "Current Login At"
+        last_login_ip: "Last Login IP"
+        current_login_ip: "Current Login IP"
+

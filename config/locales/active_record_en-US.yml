@@ -1,0 +1,96 @@
+en-US:
+  authlogic:
+    user:
+      login_invalid: "should use only letters, numbers, spaces, and .-_@ please."
+      email_invalid: "should look like an email address"
+    user_session:
+      login_blank: "cannot be blank"
+      login_not_found: "does not exist"
+      not_active: "Your account is not active"
+      not_approved: "Your account is not approved"
+      not_confirmed: "Your account is not confirmed"
+      password_blank: "can not be blank"
+      password_invalid: "is invalid"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "{{count}} error prohibited this {{model}} from being saved"
+          other:  "{{count}} errors prohibited this {{model}} from being saved"
+        # The variable :count is also available
+        body: "There were problems with the following fields:"
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is {{count}} characters)"
+        too_short: "is too short (minimum is {{count}} characters)"
+        wrong_length: "is the wrong length (should be {{count}} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than {{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        equal_to: "must be equal to {{count}}"
+        less_than: "must be less than {{count}}"
+        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        odd: "must be odd"
+        even: "must be even"
+        # Append your own errors here or at the model/attributes scope.
+        #  msg_login_bad: "use only letters, numbers, and .-_@ please."
+        #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
+        #  msg_email_bad: "should look like an email address."
+        #  msg_email_invalid: "is not a valid email address"
+
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      #   models:
+      #     user:
+      #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      #       attributes:
+      #         login:
+      #           blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and 
+      # custom blank validation message for login attribute of User model.
+      models:
+        
+    # Translate model names. Used in Model.human_name().
+      # For example,
+      #   user: "Dude"
+      # will translate User model name to "Dude"
+    models:
+      user:
+        one: "User"
+        other: "Users"
+      "user session":
+        one: "User Session"
+        other: "User Session"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+      # For example,
+      #   user:
+      #     login: "Handle"
+      # will translate User attribute "login" as "Handle"
+    attributes:
+      user:
+        login: "Login"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        crypted_password: "Crypted Password"
+        password_salt: "Password Salt"
+        persistence_token: "Persistence Token"
+        login_count: "Login Count"
+        perishable_token: "Perishable_token"
+        active: "Active?"
+        last_request_at: "Last Request At"
+        last_login_at: "Last Login At"
+        current_login_at: "Current Login At"
+        last_login_ip: "Last Login IP"
+        current_login_ip: "Current Login IP"
+

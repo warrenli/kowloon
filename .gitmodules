@@ -7,3 +7,15 @@
 [submodule "vendor/plugins/machinist"]
 	path = vendor/plugins/machinist
 	url = git://github.com/notahat/machinist.git
+[submodule "vendor/plugins/rails-footnotes"]
+	path = vendor/plugins/rails-footnotes
+	url = git://github.com/josevalim/rails-footnotes.git
+[submodule "vendor/plugins/authorization"]
+	path = vendor/plugins/authorization
+	url = git://github.com/DocSavage/rails-authorization-plugin.git
+[submodule "vendor/plugins/rspec-on-rails-matchers"]
+	path = vendor/plugins/rspec-on-rails-matchers
+	url = git://github.com/ckozus/rspec-on-rails-matchers.git
+[submodule "vendor/plugins/searchlogic"]
+	path = vendor/plugins/searchlogic
+	url = git://github.com/binarylogic/searchlogic.git

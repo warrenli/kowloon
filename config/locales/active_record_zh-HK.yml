@@ -93,4 +93,5 @@ zh-HK:
         current_login_at: "Current Login At"
         last_login_ip: "Last Login IP"
         current_login_ip: "Current Login IP"
-
+        roles: "職責"
+        accepted_roles: "接受監督"

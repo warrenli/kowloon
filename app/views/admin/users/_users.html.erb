@@ -1,0 +1,50 @@
+<% if @users_count > 0 %>
+  <div class="span-15 prepend-1 last">
+  <%= t("admin.users.index.found") + " " + @users_count.to_s %>
+  <%= t("activerecord.models.user", :count => @users_count) %>
+  </div>
+  <div class="span-4 prepend-1">
+  <% if @users_count > 10 %>
+  <%= remote_per_page_select %> <%= t("searchlogic.page_size") %>&nbsp
+  <% end %>
+  </div>
+  <div class="span-11 last pages">
+  <% if @search.page_count > 1 %>
+    <%= remote_page_links %>&nbsp;
+  <% end %>
+  </div>
+  <hr class="plain"/>
+  <table class="grid">
+  <tr>
+    <th><%= remote_order_by_link :login, :text => User.human_attribute_name('login') %></th>
+    <th><%= remote_order_by_link :email, :text => User.human_attribute_name('email') %></th>
+    <th><%= User.human_attribute_name('active') %></th>
+    <th><%= t("admin.users.index.actions_header") %></th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%=h user.login %></td>
+    <td><%=h user.email %></td>
+    <td><%=h user.active %></td>
+    <td><%= link_to t("admin.users.common.edit_link"), edit_admin_user_path(user) %> |
+    <%= link_to t("admin.users.common.show_link"), admin_user_path(user) %> |
+    <%= link_to t("admin.users.common.destroy_link"), admin_user_path(user), :confirm => t("admin.users.common.confirm_msg"), :method => :delete %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+  <hr class="plain"/>
+  <div class="span-4 prepend-1">
+  <% if @users_count > 10 %>
+  <%= remote_per_page_select %> <%= t("searchlogic.page_size") %>&nbsp
+  <% end %>
+  </div>
+  <div class="span-11 last pages">
+  <% if @search.page_count > 1 %>
+    <%= remote_page_links %>&nbsp;
+  <% end %>
+  </div>
+<% else %>
+  No record found
+<% end %>
+<hr class="plain"/>

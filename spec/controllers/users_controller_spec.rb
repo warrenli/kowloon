@@ -15,10 +15,10 @@ describe UsersController do
     describe "with valid params (login and email)" do
       it "should create a new user and redirect to root_url" do
         assert_difference('User.count') do
-          post :create, :user => { "login" => 'warren', "email" => 'warren@example.com' }
+          post :create, :user => { "login" => 'somebody', "email" => 'somebody@example.com' }
         end
-        assigns(:user).login.should eql("warren")
-        assigns(:user).email.should eql("warren@example.com")
+        assigns(:user).login.should eql("somebody")
+        assigns(:user).email.should eql("somebody@example.com")
         assigns(:user).active.should be_false
         response.flash[:notice].should_not be_nil
         response.should redirect_to(root_url)
@@ -44,6 +44,12 @@ describe UsersController do
       assigns(:user).login.should eql(user.login)
       response.should be_success
       response.should render_template('show')
+    end
+
+    it "should redirect to new_user_session_url whenever not login" do
+      get :show
+      response.flash[:notice].should_not be_nil
+      response.should redirect_to(new_user_session_url)
     end
   end
 

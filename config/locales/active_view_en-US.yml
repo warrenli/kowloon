@@ -10,9 +10,19 @@ en-US:
       register: "Register"
       login: "Login"
       forgot_password: "Forgot password"
+      admin_users: "User Management"
       my_account: "My Account"
       logout: "Logout"
       logout_confirm: "Are you sure you want to logout?"
+  # Searchlogic labels
+  searchlogic:
+    page_size: "per page"
+    next: "Next >"
+    prev: "< Prev"
+  # authorization plugin
+  authorization:
+    permission_denied_msg: "Permission denied. You cannot access the requested page."
+    login_required_msg: "Login is required to access the requested page."
   #
   # Controller:
   #   Action/View:
@@ -32,6 +42,7 @@ en-US:
   user_sessions:
     new:
       page_title: "Login"
+      login_or_email: "Login/Email"
       login_button: "Login"
     create:
       success_msg: "Login successful!"
@@ -68,3 +79,47 @@ en-US:
     update:
       success_msg: "Password successfully updated"
       failed_msg: "Password missing"
+  admin:
+    users:
+      common:
+        edit_link: "Edit"
+        show_link: "Show"
+        search_link: "Search"
+        destroy_link: "Destroy"
+        confirm_msg: "Are you sure?"
+        no_permission_msg: "Permission denied."
+      index:
+        page_title: "User Management - Search"
+        legend: "Search Criteria"
+        role_name: "User has role"
+        match: "And match"
+        match_criteria: "of the following conditions"
+        all: "- All -"
+        any: "- Any -"
+        login_contains: "Login contains"
+        email_ends_with: "Email ends with"
+        active: "Active?"
+        search_button: "Search"
+        new_user_button: "Create new user"
+        found: "Found"
+        actions_header: "Actions"
+      new:
+        page_title: "User Management - New User"
+        create_button: "Create"
+      create:
+        success_msg: "User was successfully created."
+      show:
+        page_title: "User Management - Show"
+      edit:
+        page_title: "User Management - Edit"
+        add_role: "Add Role"
+        remove_role: "Remove Role"
+        update_button: "Update"
+        update_role_button: "Update Role"
+      update:
+        success_msg: 'User was successfully updated.'
+      change_role:
+        failure_msg:  "Unknown Action"
+      destroy:
+        success_msg: "Successfully destroy user: "
+        failure_msg: "Unable to destroy user "

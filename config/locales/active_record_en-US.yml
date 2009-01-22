@@ -93,4 +93,5 @@ en-US:
         current_login_at: "Current Login At"
         last_login_ip: "Last Login IP"
         current_login_ip: "Current Login IP"
-
+        roles: "Has Roles"
+        accepted_roles: "Accepted Roles"

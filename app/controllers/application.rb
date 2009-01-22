@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_meta_data
 
-  private
+  protected
+
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
@@ -22,6 +23,7 @@ class ApplicationController < ActionController::Base
       @current_user = current_user_session && current_user_session.record
     end
 
+  private
     def require_user
       unless current_user
         store_location
@@ -58,6 +60,11 @@ class ApplicationController < ActionController::Base
       # set locale based on session or default
       I18n.locale = session[:locale] || I18n.default_locale
       logger.debug "Locale set to '#{I18n.locale}'"
+
+      Searchlogic::Config.configure do |config|
+        config.helpers.page_links_next = t("searchlogic.next")
+        config.helpers.page_links_prev = t("searchlogic.prev")
+      end
     end
 
     def extract_locale_from_params

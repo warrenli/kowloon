@@ -18,7 +18,7 @@
   <%= yield :head %>
 </head>
 <body>
-<div id="container" class="container showgrid">
+<div id="container" class="container"> <!--  showgrid-- >
   <div id="super_header" class="span-24 last language_bar">
     <%= locale_link("en-US", "English") %> | <%= locale_link("zh-HK", "中文") %>&nbsp;
   </div>
@@ -33,12 +33,14 @@
     <% if !current_user %>
       <%= link_to_unless_current t('app.menu.register'), new_account_path %> |
       <%= link_to_unless_current t('app.menu.login'), new_user_session_path %> |
-      <%= link_to t('app.menu.forgot_password'), new_password_reset_path %>
+      <%= link_to_unless_current t('app.menu.forgot_password'), new_password_reset_path %>
     <% else %>
+      <%= link_to_unless_current t('app.menu.admin_users'), admin_users_path %> |
       <%= link_to_unless_current t('app.menu.my_account'), account_path %> |
       <%= link_to_unless_current t('app.menu.logout'), user_session_path, :method => :delete, 
               :confirm => t('app.menu.logout_confirm') %>
     <% end %>
+    &nbsp;
     </span>
     &nbsp;
   </div>
@@ -60,35 +62,6 @@
   <div id="footer" class="span-24 last">
     <p>Copyright &copy; 2008 dontrush.org</p>
   </div>
-
-  <!-- Debug information -->
-  <% if ENV["RAILS_ENV"] == "development" %>
-  <div id="debug" class="span-24 last">
-    <a href="#" onclick="Element.toggle('params_debug_info');return false">params</a> |
-    <a href="#" onclick="Element.toggle('session_debug_info');return false">session</a> |
-    <a href="#" onclick="Element.toggle('env_debug_info');return false">env</a> |
-    <a href="#" onclick="Element.toggle('request_debug_info');return false">request</a>
-
-    <fieldset id="params_debug_info" class="debug_info" style="display:none">
-      <legend>params</legend>
-      <%= debug(params) %>
-    </fieldset>
-    <fieldset id="session_debug_info" class="debug_info" style="display:none">
-      <legend>session</legend>
-      <%= debug(session) %>
-    </fieldset>
-    <fieldset id="env_debug_info" class="debug_info" style="display: none">
-      <legend>env</legend>
-      <%= debug(request.env) %>
-    </fieldset>
-    <fieldset id="request_debug_info" class="debug_info" style="display: none">
-      <legend>request</legend>
-      <%= debug(request) %>
-    </fieldset>
-
-  </div>
-  <% end %>
-  <!-- Debug informatin end -->
 
 </div>
 <!-- additional elements e.g. javascript -->

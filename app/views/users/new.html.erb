@@ -1,5 +1,5 @@
 <% title t("users.new.page_title") %>
-
+<hr class="plain"/>
 <% # form_for @user do |f| %>
 <% form_for @user, :url => account_url do |f| %>
   <%= f.error_messages %>
@@ -20,4 +20,4 @@
   <%= f.submit t("users.new.register_button") %>
   </div>
 <% end %>
-
+<hr class="plain"/>

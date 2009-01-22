@@ -20,7 +20,7 @@ describe UserSessionsController do
   end
 
   describe "responding to POST create" do
-    describe "with valid params (login and email)" do
+    describe "with valid login and password" do
       it "should create user session" do
         user = User.make
         post :create, :user_session => { :login => user.login, :password => user.password }
@@ -37,6 +37,19 @@ describe UserSessionsController do
         assigns(:user_session).should_not be_nil
         response.should be_success
         response.should render_template('new')
+      end
+    end
+  end
+
+  describe "responding to POST create" do
+    describe "with valid email and password" do
+      it "should create user session" do
+        user = User.make
+        post :create, :user_session => { :login => user.email, :password => user.password }
+        user_session = UserSession.find
+        user_session.user.login.should eql(user.login)
+        response.flash[:notice].should_not be_nil
+        response.should redirect_to(account_url)
       end
     end
   end

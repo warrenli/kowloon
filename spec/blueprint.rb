@@ -1,6 +1,6 @@
 User.blueprint do
-  login "warrenli" 
-  email "warrenli@example.com"
+  login "exampleUser"
+  email "exampleUser@example.com"
   password "password"
   password_confirmation "password"
   login_count 1

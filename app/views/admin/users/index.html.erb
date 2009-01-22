@@ -1,0 +1,112 @@
+<% content_for :head do %>
+<style type="text/css">
+div.pages {
+  font-weight: bold;
+}
+a.page, span.page {
+  padding: 4px 6px;
+}
+a.page {
+  margin: 0 3px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #0063dc;
+}
+a.page:hover {
+  border: 1px solid #003366;
+  background-color: #0063dc;
+  color: #fff;
+}
+span.disabled_page {
+  color: #b1aab1;
+}
+span.current_page {
+  color: #ff0084;
+}
+/* Table */
+table.grid {
+  background: #fff;
+  margin-left: 2em;
+}
+table.grid th {
+  color: white;
+  background: #666699;
+  font-weight: bold;
+  padding: 0.5em;
+  white-space: nowrap;
+}
+table.grid th a {
+  color: white;
+  text-decoration: underline;
+}
+table.grid td {
+  text-align: left;
+  padding: 0.5em;
+  white-space: nowrap;
+}
+table.grid tr.even {
+  background: #ddd;
+}
+table.grid tr.odd {
+  background: #eee;
+}
+fieldset {
+  margin: 2em 0;
+  padding: 1.2em;
+  padding-top: 0.4em;
+  background: #eee;
+  border: 1px solid #AAA;
+}
+legend {
+  font-size: 1.4em;
+  padding: .4em 1em;
+  background: #ddd;
+  border: 1px solid #ddd;
+}
+</style>
+<% end %>
+<% title t("admin.users.index.page_title")  %>
+<hr class="plain"/>
+<% form_for [:admin, @search] do |f| %>
+<% # remote_form_for [:admin, @search] do |f| %>
+<fieldset>
+  <legend><%= t("admin.users.index.legend")  %></legend>
+  <% f.fields_for @search.conditions do |users| %>
+  <div class="span-12 prepend-4 last">
+  <label><%= t("admin.users.index.role_name") %></label>
+  <%= select_tag "role_name", options_for_select([["-----", ""], ["Is_Site_admin", "site_admin"], ["Is_Admin", "admin"], ["Is_Modulator", "modulator"]] ) %>
+  </div>
+    <div class="span-12 prepend-4 last"><label><%= t("admin.users.index.match") %></label>
+    <%= users.select :any, [ [t("admin.users.index.all"), false], [t("admin.users.index.any"), true] ] %>
+    <%= t("admin.users.index.match_criteria") %>
+    </div>
+    <div class="span-3 prepend-1">
+    <label><%= t("admin.users.index.login_contains") %></label>
+    </div>
+    <div class="span-12 last">
+    <%= users.text_field :login_contains, :size => 20 %>
+    </div>
+    <div class="span-3 prepend-1">
+    <label><%= t("admin.users.index.email_ends_with") %></label>
+    </div>
+    <div class="span-12 last">
+    <%= users.text_field :email_ends_with, :size => 20 %>
+    </div>
+    <div class="span-3 prepend-1">
+    <label><%= t("admin.users.index.active") %></label>
+    </div>
+    <div class="span-12 last">
+    <%= users.select :active, [ ["-----", ""], ["true", "1"], ["false", "0"] ] %>
+    </div>
+  <% end %>
+  <div class="prepend-4 span-12 last">
+  <%= submit_tag t("admin.users.index.search_button") %>
+  </div>
+</fieldset>
+<% end %>
+
+<div class="prepend-12 span-4 last"><%= button_to t("admin.users.index.new_user_button"), new_admin_user_url,:method => :get %></div>
+
+<div id="users">
+  <%= render :partial => "users" %>
+</div>

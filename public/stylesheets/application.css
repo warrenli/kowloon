@@ -1,7 +1,14 @@
-body {background-color:#666666;}
+body {background-color: #666666;}
 #container {
  border: 1px solid #CCFF00;
- background-color: #F0F0F5;
+ background-color: #F8F8F8;
+}
+#header {
+ background-color: #CC3333;
+ min-height:100px;
+}
+#header_supertitle {
+ background-color: maroon;
 }
 #header_title {
  color: #CCFF00;
@@ -19,8 +26,14 @@ body {background-color:#666666;}
  margin: 0;
  padding: 5px 0px;
 }
+#nav {
+ background-color: #CCFF00;
+}
 #main_body {
- min-height:300px; height: auto !important; height: 300px;
+}
+#content {
+ background-color: #F8F8F8;
+ min-height:350px;
 }
 #footer {
  color: black;
@@ -97,7 +110,7 @@ div#flash-error {
  padding: 7px;
  padding-bottom: 12px;
  margin-bottom: 20px;
- background-color: #f0f0f0;
+ background-color: #F8F8F8;
 }
 #errorExplanation h2 {
  text-align: left;
@@ -120,5 +133,5 @@ div#flash-error {
  list-style: square;
 }
 
-hr.plain {background:#F0F0F5;color:#F0F0F5;}  /* same as background color */
+hr.plain {background:#F8F8F8;color:#F8F8F8;}  /* same as background color */
 

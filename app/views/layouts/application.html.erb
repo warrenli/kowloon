@@ -8,27 +8,29 @@
   <meta name="keywords" content="<%= h @meta_keywords.gsub(/<\/?[^>]*>/, "") %>" />
   <meta name="description" content="<%= h @meta_description.gsub(/<\/?[^>]*>/, "") %>" />
   <!-- Framework CSS -->
-  <%= stylesheet_link_tag 'blueprint/screen', :media => "screen, projection" %>
-  <%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
-  <!-- Import fancy-type plugin. -->
-  <% # = stylesheet_link_tag 'blueprint/plugins/fancy-type/screen', :media => "screen, projection" %>
+  <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
+  <!--[if IE]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
   <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag :defaults %>
   <!-- additional head elements -->
   <%= yield :head %>
 </head>
 <body>
-<div id="container" class="container"> <!--  showgrid-- >
-  <div id="super_header" class="span-24 last language_bar">
-    <%= locale_link("en-US", "English") %> | <%= locale_link("zh-HK", "中文") %>&nbsp;
+<div id="container" class="container showgrid">
+  <div id="header" class="span-24 last">
+    <div id="header_supertitle" class="span-24 last language_bar">
+      <%= locale_link("en-US", "English") %> | <%= locale_link("zh-HK", "中文") %>&nbsp;
+    </div>
+    <div id="header_title" class="span-24 last">
+     <span class="prepend-1"><%= t("app.site_title") %></span>
+    </div>
+    <div id="header_subtitle" class="span-24 last">
+     <span class="prepend-2"><%= t("app.site_subtitle") %></span>
+    </div>
   </div>
-  <div id="header_title" class="span-24 last">
-     <span class="prepend-1"><%= t 'app.site_title' %></span>
-  </div>
-  <div id="header_subtitle" class="span-24 last">
-     <span class="prepend-2"><%= t 'app.site_subtitle' %></span>
-  </div>
-  <div class="span-24 last menu_bar">
+
+  <div id="nav" class="span-24 last menu_bar">
     <span style="float: right">
     <% if !current_user %>
       <%= link_to_unless_current t('app.menu.register'), new_account_path %> |
@@ -44,25 +46,28 @@
     </span>
     &nbsp;
   </div>
-  <hr />
 
-  <div class="span-4">&nbsp;
-  <!-- First column here -->
-  </div>
-  <div id="main_body" class="span-16">
+  <div id="main_body" class="span-24 last">
+    <!-- Left column here -->
+    <div class="span-4">&nbsp;</div>
+
+    <!-- Middle column here -->
+    <div id="content" class="span-16">
+    <hr class="plain" />
     <%- if show_title? -%>
     <h1><%=h yield(:title) %></h1>
     <%- end -%>
     <%= flash_messages %>
     <%= yield :layout %>
+    </div>
+
+    <!-- Right column here -->
+    <div class="span-4 last">&nbsp;</div>
   </div>
-  <div class="span-4 last">&nbsp;
-   <!-- Third column here -->
-   </div>
+
   <div id="footer" class="span-24 last">
     <p>Copyright &copy; 2008 dontrush.org</p>
   </div>
-
 </div>
 <!-- additional elements e.g. javascript -->
 <%= yield :foot %>

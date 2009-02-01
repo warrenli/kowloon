@@ -54,9 +54,9 @@
     <!-- Middle column here -->
     <div id="content" class="span-16">
     <hr class="plain" />
-    <%- if show_title? -%>
+    <% if show_title? %>
     <h1><%=h yield(:title) %></h1>
-    <%- end -%>
+    <% end %>
     <%= flash_messages %>
     <%= yield :layout %>
     </div>

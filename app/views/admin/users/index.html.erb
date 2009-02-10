@@ -62,11 +62,39 @@ legend {
   border: 2px solid #AAA;
 }
 </style>
+<script type="text/javascript">
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+$(document).ready(function($) {
+
+  // Change per_page_select to use ajax
+  $('select.per_page').livequery(function() {
+    var onchange = $(this).attr('onchange').toString();
+    var matches = onchange.match(/window\.location = "(.*)" \+ this/);
+    var url = matches[matches.length - 1];
+    $(this).attr('onchange', null)
+    $(this).change(function() {
+      $('#users').load(url + $(this).val());
+      return false;
+    })
+  })
+
+  // Change page_links to use ajax
+  $('a.order_by, a.page, a.prev_page, a.next_page').livequery('click', function() {
+    $('#users').load(this.href);
+    return false;
+  })
+
+  // Change our search form to ajax
+  $('#search_form').ajaxForm({target: '#users'});
+})
+</script>
 <% end %>
 <% title t("admin.users.index.page_title")  %>
 <hr class="plain"/>
-<% # form_for [:admin, @search] do |f| %>
-<% remote_form_for [:admin, @search] do |f| %>
+<% form_for [:admin, @search], :html => {:id => "search_form"}, :js_lib => :jquery do |f| %>
 <fieldset>
   <legend><%= t("admin.users.index.legend")  %></legend>
   <% f.fields_for @search.conditions do |users| %>

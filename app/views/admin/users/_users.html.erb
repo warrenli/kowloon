@@ -5,21 +5,22 @@
   </div>
   <div class="span-4 prepend-1">
   <% if @users_count > 10 %>
-  <%= remote_per_page_select %> <%= t("searchlogic.page_size") %>&nbsp
+  <%= per_page_select %> <%= t("searchlogic.page_size") %>&nbsp
   <% end %>
   </div>
   <div class="span-11 last pages">
   <% if @search.page_count > 1 %>
-    <%= remote_page_links %>&nbsp;
+    <%= page_links %>&nbsp;
   <% end %>
   </div>
   <hr class="plain"/>
   <table class="grid">
   <tr>
-    <th><%= remote_order_by_link :login, :text => User.human_attribute_name('login') %></th>
-    <th><%= remote_order_by_link :email, :text => User.human_attribute_name('email') %></th>
+    <th><%= order_by_link :login, :text => User.human_attribute_name('login') %></th>
+    <th><%= order_by_link :email, :text => User.human_attribute_name('email') %></th>
     <th><%= User.human_attribute_name('active') %></th>
     <th><%= t("admin.users.index.actions_header") %></th>
+
   </tr>
   <% @users.each do |user| %>
   <tr class="<%= cycle('odd', 'even') %>">
@@ -36,12 +37,12 @@
   <hr class="plain"/>
   <div class="span-4 prepend-1">
   <% if @users_count > 10 %>
-  <%= remote_per_page_select %> <%= t("searchlogic.page_size") %>&nbsp
+  <%= per_page_select %> <%= t("searchlogic.page_size") %>&nbsp
   <% end %>
   </div>
   <div class="span-11 last pages">
   <% if @search.page_count > 1 %>
-    <%= remote_page_links %>&nbsp;
+    <%= page_links %>&nbsp;
   <% end %>
   </div>
 <% else %>

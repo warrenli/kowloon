@@ -44,6 +44,7 @@ en-US:
         #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
         #  msg_email_bad: "should look like an email address."
         #  msg_email_invalid: "is not a valid email address"
+        msg_login_bad: "cannot be a reserved name."
 
       # You can define own errors for models or model attributes.
       # The values :model, :attribute and :value are always available for interpolation.

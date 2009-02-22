@@ -1,12 +1,15 @@
 development:
   host: "localhost:3000"
   admin_email: "Kowloon Notifier <noreply@kowloon.com>"
+  auto_activate: false
 
 test:
   host: "localhost:3000"
   admin_email: "Kowloon Notifier <noreply@kowloon.com>"
+  auto_activate: false
 
 production:
   host: "www.kowloon.com"
   admin_email: "Kowloon Notifier <noreply@kowloon.com>"
+  auto_activate: false
 

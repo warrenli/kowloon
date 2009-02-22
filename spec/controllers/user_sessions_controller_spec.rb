@@ -27,7 +27,7 @@ describe UserSessionsController do
         user_session = UserSession.find
         user_session.user.login.should eql(user.login)
         response.flash[:notice].should_not be_nil
-        response.should redirect_to(account_url)
+        response.should redirect_to(edit_account_url)
       end
     end
 
@@ -49,7 +49,7 @@ describe UserSessionsController do
         user_session = UserSession.find
         user_session.user.login.should eql(user.login)
         response.flash[:notice].should_not be_nil
-        response.should redirect_to(account_url)
+        response.should redirect_to(edit_account_url)
       end
     end
   end

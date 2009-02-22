@@ -53,18 +53,20 @@ zh-HK:
       page_title: "登記"
       register_button: "登記"
     create:
-      success_msg: "帳戶已成功登記。有關帳戶的啟動方法經已用電子郵件通知您，請查閱您的電子郵箱。"
+      success_msg: "帳戶已成功登記。"
+      need_activation_msg: "帳戶已成功登記。有關帳戶的啟動方法經已用電子郵件通知您，請查閱您的電子郵箱。"
     show:
       page_title: "我的帳戶"
       edit_link: "修改"
     edit:
-      page_title: "修改帳戶資料"
+      page_title: "我的帳戶"
       new_password: "新密碼"
       update_button: "更新"
       my_account_link: "我的帳戶"
     update:
       success_msg: "帳戶已成功更新!"
   password_resets:
+    load_user_error_msg: "很抱歉，我們無法找到您的帳戶。"
     new:
       page_title: "忘記密碼"
       instruction: "請輸入您的電郵地址，以便將重置密碼的方法寄給您:"

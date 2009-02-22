@@ -1,7 +1,7 @@
 <% title t("admin.users.show.page_title") %>
 <hr class="plain"/>
 
-<%= render :partial => "/users/a_user" %>
+<%= render :partial => "a_user" %>
 
 <%= link_to t("admin.users.common.edit_link"), edit_admin_user_path(@user) %> |
 <%= link_to t("admin.users.common.search_link"), admin_users_path %> |

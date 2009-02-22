@@ -3,8 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe User do
   fixtures :users
 
-  describe 'being created with valid attribures' do
+  describe 'being created with valid attribures and :auto_activate is false' do
     before(:each) do
+      APP_CONFIG[:auto_activate]= false
       @valid_attributes = {
         :login => 'warrenli',
         :email => 'warrenli@example.com'
@@ -23,8 +24,32 @@ describe User do
     end
   end
 
-  describe 'being signed up with valid attribures' do
+  describe 'being created with valid attribures and :auto_activate is true' do
     before(:each) do
+      APP_CONFIG[:auto_activate]= true
+      @valid_attributes = {
+        :login                 => 'warrenli',
+        :email                 => 'warrenli@example.com',
+        :password              => 'password',
+        :password_confirmation => 'password'
+      }
+      @new_user = User.create!(@valid_attributes)
+    end
+
+    it "should not be active" do
+      @new_user.active.should be_false
+      @new_user.active?.should be_false
+      @new_user.password_required?.should be_false
+    end
+
+    it "should has no credentials" do
+      @new_user.has_no_credentials?.should be_false
+    end
+  end
+
+  describe 'being signed up with valid attribures and :auto_activate is false' do
+    before(:each) do
+      APP_CONFIG[:auto_activate]= false
       @valid_attributes = { :user => { :login => 'warrenli', :email => 'warrenli@example.com' } }
       @new_user = User.new
       @new_user.signup!(@valid_attributes)
@@ -67,5 +92,41 @@ describe User do
     end
   end
 
+  describe 'being signed up with valid attribures and :auto_activate is true' do
+    before(:each) do
+      APP_CONFIG[:auto_activate]= true
+      @new_user = User.new(:login => 'warrenli', :email => 'warrenli@example.com',
+                           :password => 'password', :password_confirmation => 'password')
+    end
+
+    it "should not be active" do
+      @new_user.active.should be_false
+      @new_user.active?.should be_false
+      @new_user.password_required?.should be_true
+    end
+
+    it "should has credentials" do
+      @new_user.has_no_credentials?.should be_false
+    end
+
+    it "should deliver_activation_instructions!" do
+      old_perishable_token = @new_user.perishable_token
+      @new_user.deliver_activation_instructions!
+      @new_user.perishable_token.should_not eql(old_perishable_token)
+    end
+
+    it "should be activated explicitly" do
+      @new_user.active = true
+      @new_user.active.should be_true
+      @new_user.active?.should be_true
+      @new_user.password_required?.should be_true
+    end
+
+    it "should deliver_password_reset_instructions!" do
+      old_perishable_token = @new_user.perishable_token
+      @new_user.deliver_password_reset_instructions!
+      @new_user.perishable_token.should_not eql(old_perishable_token)
+    end
+  end
 end
 

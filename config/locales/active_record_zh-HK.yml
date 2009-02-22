@@ -44,6 +44,7 @@ zh-HK:
         #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
         #  msg_email_bad: "請使用正確電郵"
         #  msg_email_invalid: "電郵地址無效"
+        msg_login_bad: "不能使用，請重申輸入"
 
       # You can define own errors for models or model attributes.
       # The values :model, :attribute and :value are always available for interpolation.

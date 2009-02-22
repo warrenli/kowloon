@@ -13,9 +13,12 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(params[:user_session])
+# added in the following line ##################
+#    @user_session.remember_me = true
+# added in the previous line  ##################
     if @user_session.save
       flash[:notice] = t('user_sessions.create.success_msg')
-      redirect_back_or_default account_url
+      redirect_back_or_default edit_account_url
     else
       render :action => :new
     end

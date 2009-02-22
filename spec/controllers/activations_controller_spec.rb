@@ -1,6 +1,10 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe ActivationsController do
+  before(:all) do
+    APP_CONFIG[:auto_activate]= false
+  end
+
   describe "responding to GET new" do
     describe "with valid activation_code" do  
       it "should find inactive user" do

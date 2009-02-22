@@ -9,28 +9,29 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    # Saving without session maintenance to skip auto-login 
-    # which can't happen here because the User has not yet been activated
-    # if @user.save_without_session_maintenance
-    if @user.signup!(params)
-      @user.deliver_activation_instructions!
-      flash[:notice] = t('users.create.success_msg')
-      redirect_to root_url
+    if APP_CONFIG[:auto_activate]
+      @user.active = true
+      if @user.save
+        flash[:notice] = t('users.create.success_msg')
+        redirect_back_or_default root_url
+      else
+        render :action => :new
+      end
     else
-      render :action => :new
+      if @user.save_without_session_maintenance
+        @user.deliver_activation_instructions!
+        flash[:notice] = t('users.create.need_activation_msg')
+        redirect_back_or_default root_url
+      else
+        render :action => :new
+      end
     end
-
-#    if @user.save
-#      flash[:notice] = "Account registered!"
-#      redirect_back_or_default account_url
-#    else
-#      render :action => :new
-#    end
 
   end
   
   def show
     @user = @current_user
+    render :action => :edit
   end
 
   def edit

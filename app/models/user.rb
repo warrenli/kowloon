@@ -7,13 +7,18 @@ class User < ActiveRecord::Base
     :login_field_validates_length_of_options => { :within => 5..100 },
     :email_field_validation_options => { :message => I18n.t("authlogic.user.email_invalid") },
     :password_field_validation_options => { :unless => :active? },
-    :password_field_validates_length_of_options => { :on => :update, :if => :password_required?, :minimum => 8 }
+    :password_field_validates_length_of_options => { :if => :password_required?, :minimum => 8 }
+
+#  acts_as_authentic  :validate_login_field => false
 
   attr_accessible :login, :email, :password, :password_confirmation, :active
 
 #  named_scope :active, :include => :roles, :conditions=> {:active => true}
 #  named_scope :admin, :joins => :roles, :conditions => ['roles.name = ?', 'admin']
   named_scope :role,  lambda { |myrole| { :joins => [:roles], :conditions => ['roles.name = ?', myrole]} }
+
+  validate :login_is_not_a_reserved_name
+  RESERVED_LOGIN = ['ADMINISTRATOR','WEBMASTER','SUPERUSER', 'SUPERVISER']
 
   def self.find_by_login_or_email(login)
     find_by_login(login) || find_by_email(login)
@@ -37,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def active?
-    active
+    self.active
   end
 
   def has_no_credentials?
@@ -59,6 +64,18 @@ class User < ActiveRecord::Base
   end
 
 #  alias password_required? active?
-   alias_method :password_required?, :active?
+#  alias_method :password_required?, :active?
 
+  def password_required?
+    if self.new_record?
+      APP_CONFIG[:auto_activate]
+    else
+      active?
+    end
+  end
+
+  protected
+  def login_is_not_a_reserved_name
+    errors.add(:login, :msg_login_bad ) if RESERVED_LOGIN.include?(self.login.upcase)
+  end
 end

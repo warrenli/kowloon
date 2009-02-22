@@ -38,7 +38,7 @@
       <%= link_to_unless_current t('app.menu.forgot_password'), new_password_reset_path %>
     <% else %>
       <%= link_to_unless_current t('app.menu.admin_users'), admin_users_path %> |
-      <%= link_to_unless_current t('app.menu.my_account'), account_path %> |
+      <%= link_to_unless_current t('app.menu.my_account'), edit_account_path %> |
       <%= link_to_unless_current t('app.menu.logout'), user_session_path, :method => :delete, 
               :confirm => t('app.menu.logout_confirm') %>
     <% end %>

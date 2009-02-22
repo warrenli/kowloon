@@ -1,14 +1,45 @@
 <% title t("users.edit.page_title") %>
 <hr class="plain"/>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("login") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.login %>
+</div>
+
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("email") %>:</b>
+</div>
+<div class="span-12 last">
+<%=h @user.email %>
+</div>
+
+<% unless @user.roles.blank? %>
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("roles") %>:</b>
+</div>
+<div class="span-12 last">
+<% for role in @user.roles %>
+  <%= role.to_s %>
+<% end %>&nbsp;
+</div>
+<% end %>
+
+<% unless @user.accepted_roles.blank? %>
+<div class="span-3 prepend-1">
+<b><%= User.human_attribute_name("accepted_roles") %>:</b>
+</div>
+<div class="span-12 last">
+<% for role in @user.accepted_roles %>
+  <%= role.name.capitalize %>
+<% end %>&nbsp;
+</div>
+<% end %>
+
+<hr class="plain"/>
 <% form_for @user, :url => account_path do |f| %>
   <%= f.error_messages %>
-  <% # = render :partial => "form", :object => f %>
-  <div class="span-3 prepend-1">
-  <%= f.label :login %>
-  </div>
-  <div class="span-12 last">
-  <%= f.text_field :login, :readonly => true %>
-  </div>
   <div class="span-3 prepend-1">
   <%= f.label :email %>
   </div>
@@ -27,35 +58,9 @@
   <div class="span-12 last">
   <%= f.password_field :password_confirmation %>
   </div>
-  <div class="span-3 prepend-1">
-  <%= f.label :active %>
-  </div>
-  <div class="span-12 last">
-  <%= @user.active.to_s %>
-  </div>
-  <hr class="plain"/>
-  <div class="span-3 prepend-1">
-  <b><%= User.human_attribute_name("roles") %>:</b>
-  </div>
-  <div class="span-12 last">
-  <% for role in @user.roles %>
-    <%= role.to_s %>
-  <% end %>
-  </div>
-  <div class="span-3 prepend-1">
-  <b><%= User.human_attribute_name("accepted_roles") %>:</b>
-  </div>
-  <div class="span-12 last">
-  <% for role in @user.accepted_roles %>
-    <%= role.name.capitalize %>
-  <% end %>
-  </div>
   <hr class="plain"/>
   <div class="prepend-4 span-12 last">
   <%= f.submit t("users.edit.update_button") %>
   </div>
 <% end %>
-<div class="span-16 last">
-<%= link_to t('users.edit.my_account_link'), account_path %>
-</div>
 <hr class="plain"/>

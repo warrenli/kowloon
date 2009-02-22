@@ -53,18 +53,20 @@ en-US:
       page_title: "Register"
       register_button: "Register"
     create:
-      success_msg: "Your account has been created. Please check your e-mail for your account activation instructions!"
+      success_msg: "Your account has been created!"
+      need_activation_msg: "Your account has been created. Please check your e-mail for your account activation instructions!"
     show:
       page_title: "My Account"
       edit_link: "Edit"
     edit:
-      page_title: "Edit My Account"
+      page_title: "My Account"
       new_password: "New Password"
       update_button: "Update"
       my_account_link: "My Account"
     update:
       success_msg: "Account updated!"
   password_resets:
+    load_user_error_msg: "We're sorry, but we could not locate your account."
     new:
       page_title: "Forgot Password"
       instruction: "Fill out the form below and instructions to reset your password will be emailed to you:"

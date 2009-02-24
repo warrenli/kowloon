@@ -128,5 +128,39 @@ describe User do
       @new_user.perishable_token.should_not eql(old_perishable_token)
     end
   end
+
+  describe "has class method available_login?" do
+    before(:each) do
+      @admin = User.find_by_login('admin')
+    end
+
+    it "should return false for reserved login" do
+      User.available_login?('Administrator').should be_false
+      User.available_login?('webmaster').should be_false
+      User.available_login?('superUser').should be_false
+      User.available_login?('Superviser').should be_false
+      User.available_login?('guest').should be_false
+    end
+
+    it "should return false for @admin" do
+      User.available_login?(@admin.login).should be_false
+      User.available_login?('guest_admin').should be_true
+    end
+  end
+
+  describe "has class method available_email?" do
+    before(:each) do
+      @admin = User.find_by_login('admin')
+    end
+
+    it "should return false for invalid email pattern" do
+      User.available_email?('invalid_email').should be_false
+    end
+
+    it "should return false for @admin" do
+      User.available_email?(@admin.email).should be_false
+      User.available_email?('unknown@example.com').should be_true
+    end
+  end
 end
 

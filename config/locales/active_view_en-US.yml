@@ -60,6 +60,8 @@ en-US:
       edit_link: "Edit"
     edit:
       page_title: "My Account"
+      change_email_link: "Change"
+      legend_title: "Change Password"
       new_password: "New Password"
       update_button: "Update"
       my_account_link: "My Account"
@@ -81,6 +83,21 @@ en-US:
     update:
       success_msg: "Password successfully updated"
       failed_msg: "Password missing"
+  change_email:
+    new:
+      page_title: "Change Email Request"
+      page_description: "To make sure your new e-mail address is valid, we'll send a verification message to this email address once you submit the form below."
+      submit_button: "Send Request"
+    show:
+      page_title: "Change Email Request Sent"
+      page_description_1: "You've requested to change the e-mail address associated with your account. Your email must always be a real, valid address, so we just sent a verification e-mail to '{{new_email}}'."
+      page_description_2: "Your e-mail address won't be officially changed until you click on the confirmation link in the e-mail"
+    edit:
+      page_title: "Confirm Changing Email"
+      page_description: "You've requested that your account's e-mail address be changed to:"
+      submit_button: "Confirm"
+    update:
+      success_msg: "Email applied"
   admin:
     users:
       common:

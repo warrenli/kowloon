@@ -60,8 +60,10 @@ zh-HK:
       edit_link: "修改"
     edit:
       page_title: "我的帳戶"
+      change_email_link: "改變電郵地址"
+      legend_title: "更改密碼"
       new_password: "新密碼"
-      update_button: "更新"
+      update_button: "更改密碼"
       my_account_link: "我的帳戶"
     update:
       success_msg: "帳戶已成功更新!"
@@ -81,6 +83,21 @@ zh-HK:
     update:
       success_msg: "成功更改密碼!"
       failed_msg: "未有輸入密碼!"
+  change_email:
+    new:
+      page_title: "改變電郵地址"
+      page_description: "為了確保新電郵地址是有效的，請您提交下面的表格，我們會發送確認郵件到這個電郵地址"
+      submit_button: "發送電子郵件"
+    show:
+      page_title: "確認郵件經已送出"
+      page_description_1: "由於您的要求改變電郵地址，所以我們發送確認郵件到這個新的電郵地址 '{{new_email}}'."
+      page_description_2: "您的電郵地址並未變，直到你點擊確認鏈接的電子郵件"
+    edit:
+      page_title: "確認新的電郵地址"
+      page_description: "您要求將電郵地址更改為："
+      submit_button: "請按鍵確認"
+    update:
+      success_msg: "新的電郵地址已生效"
   admin:
     users:
       common:

@@ -43,7 +43,7 @@ zh-HK:
         #  msg_login_bad: "請使用英文字母、數字或 . - _ @"
         #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
         #  msg_email_bad: "請使用正確電郵"
-        #  msg_email_invalid: "電郵地址無效"
+        msg_email_invalid: "電郵地址無效"
         msg_login_bad: "不能使用，請重申輸入"
 
       # You can define own errors for models or model attributes.
@@ -56,10 +56,10 @@ zh-HK:
       #       attributes:
       #         login:
       #           blank: "This is a custom blank message for User login"
-      # Will define custom blank validation message for User model and 
+      # Will define custom blank validation message for User model and
       # custom blank validation message for login attribute of User model.
       models:
-        
+
     # Translate model names. Used in Model.human_name().
       # For example,
       #   user: "Dude"
@@ -96,3 +96,5 @@ zh-HK:
         current_login_ip: "Current Login IP"
         roles: "職責"
         accepted_roles: "接受監督"
+      user_email:
+        new_email: "新電郵地址"

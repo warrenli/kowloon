@@ -18,10 +18,27 @@ class User < ActiveRecord::Base
   named_scope :role,  lambda { |myrole| { :joins => [:roles], :conditions => ['roles.name = ?', myrole]} }
 
   validate :login_is_not_a_reserved_name
-  RESERVED_LOGIN = ['ADMINISTRATOR','WEBMASTER','SUPERUSER', 'SUPERVISER']
+  RESERVED_LOGIN = ['ADMINISTRATOR','WEBMASTER','SUPERUSER', 'SUPERVISER', 'GUEST']
+
+  # For changing email
+  has_many :change_email_requests, :class_name => 'UserEmail', :order => 'request_expiration_date DESC'
+  has_many :old_emails, :class_name => 'UserEmail',
+                        :conditions => { :status => 'confirmed' },
+                        :order => 'confirmed_at DESC',
+                        :readonly=> true
 
   def self.find_by_login_or_email(login)
     find_by_login(login) || find_by_email(login)
+  end
+
+  def self.available_login?(new_login)
+    return false if RESERVED_LOGIN.include?(new_login.upcase)
+    not find_by_login(new_login)
+  end
+
+  def self.available_email?(new_email)
+    return false unless new_email =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+    not find_by_email(new_email)
   end
 
   def deliver_password_reset_instructions!
@@ -74,7 +91,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def request_changing_email(new_email)
+    new_request = UserEmail.new(:new_email => new_email, :old_email => self.email )
+    self.change_email_requests << new_request
+    request_code = new_request.request_code
+    if request_code
+      Notifier.deliver_email_verification(self, new_email, request_code) if request_code
+      request_code
+    else
+      raise I18n.t("activerecord.errors.messages.msg_email_invalid")
+    end
+  end
+
   protected
+
   def login_is_not_a_reserved_name
     errors.add(:login, :msg_login_bad ) if RESERVED_LOGIN.include?(self.login.upcase)
   end

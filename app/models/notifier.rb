@@ -28,4 +28,13 @@ class Notifier < ActionMailer::Base
     body          :root_url => root_url
     content_type  "text/plain"
   end
+
+  def email_verification(user, new_email, request_code)
+    subject       "確認新電郵地址 - Confirm New Email Address"
+    from          APP_CONFIG[:admin_email]
+    recipients    new_email
+    sent_on       Time.now
+    body          :confirm_url => change_email_url(request_code)
+    content_type  "text/plain"
+  end
 end

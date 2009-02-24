@@ -43,7 +43,7 @@ en-US:
         #  msg_login_bad: "use only letters, numbers, and .-_@ please."
         #  msg_name_bad: "avoid non-printing characters and \\&gt;&lt;&amp;/ please."
         #  msg_email_bad: "should look like an email address."
-        #  msg_email_invalid: "is not a valid email address"
+        msg_email_invalid: "is not a valid email address"
         msg_login_bad: "cannot be a reserved name."
 
       # You can define own errors for models or model attributes.
@@ -56,10 +56,10 @@ en-US:
       #       attributes:
       #         login:
       #           blank: "This is a custom blank message for User login"
-      # Will define custom blank validation message for User model and 
+      # Will define custom blank validation message for User model and
       # custom blank validation message for login attribute of User model.
       models:
-        
+
     # Translate model names. Used in Model.human_name().
       # For example,
       #   user: "Dude"
@@ -96,3 +96,5 @@ en-US:
         current_login_ip: "Current Login IP"
         roles: "Has Roles"
         accepted_roles: "Accepted Roles"
+      user_email:
+        new_email: "New Email"

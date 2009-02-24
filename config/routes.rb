@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :password_resets
   map.resource :user_session
+  map.change_email 'verify_email/:request_code', :controller => 'change_email', :action => 'edit'
   # Home Page
   map.root :controller => "home", :action => "index"
   # Install the default routes as the lowest priority.

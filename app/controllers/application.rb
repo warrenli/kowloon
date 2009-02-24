@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :set_meta_data
+  before_filter :set_user_time_zone
 
   protected
 
@@ -84,5 +85,10 @@ class ApplicationController < ActionController::Base
     # Automatically respond with 404 for ActiveRecord::RecordNotFound
     def record_not_found
       render :file => File.join(RAILS_ROOT, 'public', '404.html'), :status => 404
+    end
+
+    def set_user_time_zone
+      Time.zone="Hong Kong"
+      # Time.zone = current_user.time_zone if logged_in?
     end
 end

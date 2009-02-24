@@ -27,4 +27,9 @@ module ApplicationHelper
        url_for( {:controller => self.controller_name, :action => self.action_name}.merge(options) )
      end
   end
+
+#  def get_current_time
+#     Time.zone="Hong Kong"
+#     Time.now
+#  end
 end

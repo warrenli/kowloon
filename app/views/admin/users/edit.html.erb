@@ -6,7 +6,7 @@
 <div class="span-3 prepend-1">
 <b><%= User.human_attribute_name("roles") %>:</b>
 </div>
-<div class="span-12 last">
+<div class="span-11 last">
 <% for role in @user.roles %>
   <%= role.to_s %>&nbsp;&nbsp;&nbsp;
 <% end %><br />
@@ -14,19 +14,17 @@
 <div class="span-3 prepend-1">
 <b><%= User.human_attribute_name("accepted_roles") %>:</b>
 </div>
-<div class="span-12 last">
+<div class="span-11 last">
 <% for role in @user.accepted_roles %>
   <%= role.name.capitalize %>
 <% end %>
 </div>
-<div class="prepend-4 span-12 last">
+<div class="prepend-4 span-11 last">
 <%= f.submit t("admin.users.edit.update_button") %>
 </div>
 <% end %>
 <hr class="plain"/>
-
 <%= render :partial => "change_role" %>
-
 <hr class="plain">
 <%= link_to t("admin.users.common.show_link"), admin_user_path(@user) %> |
 <%= link_to t("admin.users.common.search_link"), admin_users_path %>

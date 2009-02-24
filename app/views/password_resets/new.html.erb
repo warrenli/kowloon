@@ -1,15 +1,14 @@
 <% title t('password_resets.new.page_title') %>
 <hr class="plain"/>
 <%= t('password_resets.new.instruction') %><br /><br />
-
 <% form_tag password_resets_path do %>
   <div class="span-3 prepend-1">
   <label><%= t('password_resets.new.email_label') %>:</label>
   </div>
-  <div class="span-12 last">
+  <div class="span-11 last">
   <%= text_field_tag "email" %>
   </div>
-  <div class="prepend-4 span-12 last">
+  <div class="prepend-4 span-11 last">
   <%= submit_tag t('password_resets.new.submit_button') %>
   </div>
 <% end %>

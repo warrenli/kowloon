@@ -40,7 +40,7 @@ describe ChangeEmailController do
         response.should render_template('show')
       end
 
-      it "should be successful if new email equals original email" do
+      it "should render 'new' template  if new email equals original email" do
         new_email = @user.email
         post 'create', :new_email => new_email
         assigns(:user).login.should eql(@user.login)
@@ -50,8 +50,21 @@ describe ChangeEmailController do
         response.should render_template('new')
       end
 
-      it "should be successful if new email is invalid" do
-        new_email = 'abc'''
+      it "should 'new' template if new email equals another user's email" do
+        @another_user = User.make( :login => 'tester', :email => 'tester@example.com')
+        @another_user.email.should eql('tester@example.com')
+
+        new_email = @another_user.email
+        post 'create', :new_email => new_email
+        assigns(:user).login.should eql(@user.login)
+        assigns(:new_email).should eql(new_email)
+        response.flash[:notice].should_not be_nil
+        response.should be_success
+        response.should render_template('new')
+      end
+
+      it "should render 'new' template  if new email is invalid" do
+        new_email = 'abc'
         post 'create', :new_email => new_email
         assigns(:user).login.should eql(@user.login)
         assigns(:new_email).should eql(new_email)

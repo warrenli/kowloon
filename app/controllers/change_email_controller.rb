@@ -9,6 +9,7 @@ class ChangeEmailController < ApplicationController
     raise unless request.post?
     @new_email = params['new_email']
     raise I18n.t("activerecord.errors.messages.msg_email_invalid") if @user.email == @new_email
+    raise I18n.t("activerecord.errors.messages.msg_email_invalid") unless User.available_email?(@new_email)
     request_code = @user.request_changing_email(@new_email)
     render :action => 'show'
   rescue Exception => e

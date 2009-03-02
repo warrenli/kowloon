@@ -6,11 +6,7 @@ describe User do
   describe 'being created with valid attribures and :auto_activate is false' do
     before(:each) do
       APP_CONFIG[:auto_activate]= false
-      @valid_attributes = {
-        :login => 'warrenli',
-        :email => 'warrenli@example.com'
-      }
-      @new_user = User.create!(@valid_attributes)
+      @new_user = User.make( :active=>false, :password=>"", :password_confirmation=>"")
     end
 
     it "should not be active" do
@@ -22,18 +18,15 @@ describe User do
     it "should has no credentials" do
       @new_user.has_no_credentials?.should be_true
     end
+    after(:each) do
+     @new_user.destroy
+    end
   end
 
-  describe 'being created with valid attribures and :auto_activate is true' do
+  describe 'being created with valid attribures, active equals false and :auto_activate is true' do
     before(:each) do
       APP_CONFIG[:auto_activate]= true
-      @valid_attributes = {
-        :login                 => 'warrenli',
-        :email                 => 'warrenli@example.com',
-        :password              => 'password',
-        :password_confirmation => 'password'
-      }
-      @new_user = User.create!(@valid_attributes)
+      @new_user = User.make( :active=>false)
     end
 
     it "should not be active" do
@@ -50,7 +43,7 @@ describe User do
   describe 'being signed up with valid attribures and :auto_activate is false' do
     before(:each) do
       APP_CONFIG[:auto_activate]= false
-      @valid_attributes = { :user => { :login => 'warrenli', :email => 'warrenli@example.com' } }
+      @valid_attributes = { :user => { :login => 'tester', :email => 'tester@example.com' } }
       @new_user = User.new
       @new_user.signup!(@valid_attributes)
       @valid_password = { :user => { :password => 'password', :password_confirmation => 'password'} }
@@ -92,17 +85,16 @@ describe User do
     end
   end
 
-  describe 'being signed up with valid attribures and :auto_activate is true' do
+  describe 'being signed up with valid attribures, active equals false and :auto_activate is true' do
     before(:each) do
       APP_CONFIG[:auto_activate]= true
-      @new_user = User.new(:login => 'warrenli', :email => 'warrenli@example.com',
-                           :password => 'password', :password_confirmation => 'password')
+      @new_user = User.make( :active=>false)
     end
 
     it "should not be active" do
       @new_user.active.should be_false
       @new_user.active?.should be_false
-      @new_user.password_required?.should be_true
+      @new_user.password_required?.should be_false
     end
 
     it "should has credentials" do

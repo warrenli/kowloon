@@ -47,7 +47,6 @@ describe UsersController do
 
     describe "with valid params (login, email and password)" do
       it "should create a new user and redirect to root_url" do
-        APP_CONFIG[:auto_activate]= true
         assert_difference('User.count') do
           post :create, :user => { "login" => 'somebody', "email" => 'somebody@example.com',
                 "password" => "password", "password_confirmation" => "password" }
@@ -113,7 +112,7 @@ describe UsersController do
       it "should redirect to 'show' template" do
         user = User.make
         set_session_for(user)
-        put :update, :id => user.id, 
+        put :update, :id => user.id,
             :user => { :password => 'password', :password_confirmation => 'password' }
         response.should redirect_to(account_url)
       end

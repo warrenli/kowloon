@@ -3,11 +3,9 @@ class User < ActiveRecord::Base
   acts_as_authorized_user
   acts_as_authorizable
 
-  acts_as_authentic  :login_field_validates_format_of_options => { :message => I18n.t("authlogic.user.login_invalid") },
-    :login_field_validates_length_of_options => { :within => 5..100 },
-    :email_field_validation_options => { :message => I18n.t("authlogic.user.email_invalid") },
-    :password_field_validation_options => { :unless => :active? },
-    :password_field_validates_length_of_options => { :if => :password_required?, :minimum => 8 }
+  acts_as_authentic  :login_field_validates_length_of_options => { :within => 5..100 },
+    :password_field_validation_options => { :if => :password_required? },
+    :password_field_validates_length_of_options => { :minimum => 8 }
 
 #  acts_as_authentic  :validate_login_field => false
 

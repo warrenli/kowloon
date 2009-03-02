@@ -23,3 +23,13 @@ admin:
   created_at:       <%= 5.days.ago.to_s :db %>
   updated_at:       <%= 1.days.ago.to_s :db %>
 
+inactive:
+  id: 2
+  login: inactive
+  persistence_token: d5518179819cca1f6126db1b2bacfd548d9640263210318aeb951239abab419379865f646150cc34bfef879a8ad5d19f1d8b7ac6ff2f2ed35058bb00d622316a
+  perishable_token: YgAwJPL1elgGOxlssPJt
+  login_count:      0
+  email:            inactive@example.com
+  active:           false
+  created_at:       <%= 5.days.ago.to_s :db %>
+  updated_at:       <%= 1.days.ago.to_s :db %>

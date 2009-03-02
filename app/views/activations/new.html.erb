@@ -1,6 +1,5 @@
 <% title t("activations.new.page_title") %>
 <hr class="plain"/>
-<fieldset>
 <% form_for @user, :url => activate_path(@user.id), :html => { :method => :post } do |form| %>
   <%= form.error_messages %>
   <%= render :partial => "form", :locals => { :form => form }%>
@@ -8,5 +7,4 @@
   <%= form.submit t("activations.new.activate_button")%>
   </div>
 <% end %>
-</fieldset>
 <hr class="plain"/>

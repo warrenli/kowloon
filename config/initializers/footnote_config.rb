@@ -1,10 +1,10 @@
 if defined?(Footnotes)
     Footnotes::Filter.multiple_notes = false
-    Footnotes::Filter.notes =[:cookies, :current_user, :env, :filters, :general, :log, :params, :queries, :routes, :session] 
+    Footnotes::Filter.notes =[:cookies, :env, :filters, :general, :log, :params, :queries, :routes, :session]
 end
 
 
-# Enable Footnote 
+# Enable Footnote
 #
 # if defined?(Footnotes)
 #    Footnotes::Filter.prefix = 'gedit://open?url=file://%s&line=%d&column=%d'

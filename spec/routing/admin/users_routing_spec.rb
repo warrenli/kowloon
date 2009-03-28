@@ -11,23 +11,23 @@ describe Admin::UsersController do
     end
 
     it "should map #show" do
-      route_for(:controller => "admin/users", :action => "show", :id => 1).should == "/admin/users/1"
+      route_for(:controller => "admin/users", :action => "show", :id => "1").should == "/admin/users/1"
     end
 
     it "should map #edit" do
-      route_for(:controller => "admin/users", :action => "edit", :id => 1).should == "/admin/users/1/edit"
+      route_for(:controller => "admin/users", :action => "edit", :id => "1").should == "/admin/users/1/edit"
     end
 
     it "should map #update" do
-      route_for(:controller => "admin/users", :action => "update", :id => 1).should == "/admin/users/1"
+      route_for(:controller => "admin/users", :action => "update", :id => "1").should == {:path => "/admin/users/1", :method => :put}
     end
 
     it "should map #destroy" do
-      route_for(:controller => "admin/users", :action => "destroy", :id => 1).should == "/admin/users/1"
+      route_for(:controller => "admin/users", :action => "destroy", :id => "1").should == {:path => "/admin/users/1", :method => :delete}
     end
 
     it "should map #change_role" do
-      route_for(:controller => "admin/users", :action => "change_role", :id => 1).should == "/admin/users/1/change_role"
+      route_for(:controller => "admin/users", :action => "change_role", :id => "1").should == {:path => "/admin/users/1/change_role", :method => :put}
     end
   end
 

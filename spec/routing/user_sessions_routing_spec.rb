@@ -12,10 +12,10 @@ describe UserSessionsController do
       route_for(:controller => "user_sessions", :action => "edit").should == "/user_session/edit"
     end
     it "should map #update" do
-      route_for(:controller => "user_sessions", :action => "update").should == "/user_session"
+      route_for(:controller => "user_sessions", :action => "update").should == {:path =>"/user_session", :method => :put}
     end
     it "should map #destroy" do
-      route_for(:controller => "user_sessions", :action => "destroy").should == "/user_session"
+      route_for(:controller => "user_sessions", :action => "destroy").should == {:path =>"/user_session", :method => :delete}
     end
 
   end

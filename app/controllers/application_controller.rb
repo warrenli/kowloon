@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all
-  protect_from_forgery  :secret => 'd66f2151a3c38cae0424ca278cd2d6ab'
+  protect_from_forgery # :secret => 'd66f2151a3c38cae0424ca278cd2d6ab'
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found

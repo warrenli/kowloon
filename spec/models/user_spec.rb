@@ -12,7 +12,7 @@ describe User do
     it "should not be active" do
       @new_user.active.should be_false
       @new_user.active?.should be_false
-      @new_user.password_required?.should be_false
+      @new_user.require_password?.should be_false
     end
 
     it "should has no credentials" do
@@ -32,7 +32,7 @@ describe User do
     it "should not be active" do
       @new_user.active.should be_false
       @new_user.active?.should be_false
-      @new_user.password_required?.should be_false
+      @new_user.require_password?.should be_false
     end
 
     it "should has no credentials" do
@@ -52,7 +52,7 @@ describe User do
     it "should not be active" do
       @new_user.active.should be_false
       @new_user.active?.should be_false
-      @new_user.password_required?.should be_false
+      @new_user.require_password?.should be_false
     end
 
     it "should has no credentials" do
@@ -69,7 +69,7 @@ describe User do
       @new_user.activate!(@valid_password)
       @new_user.active.should be_true
       @new_user.active?.should be_true
-      @new_user.password_required?.should be_true
+      @new_user.require_password?.should be_true
     end
 
     it "should deliver_activation_confirmation!" do
@@ -94,7 +94,7 @@ describe User do
     it "should not be active" do
       @new_user.active.should be_false
       @new_user.active?.should be_false
-      @new_user.password_required?.should be_false
+      @new_user.require_password?.should be_false
     end
 
     it "should has credentials" do
@@ -111,7 +111,7 @@ describe User do
       @new_user.active = true
       @new_user.active.should be_true
       @new_user.active?.should be_true
-      @new_user.password_required?.should be_true
+      @new_user.require_password?.should be_true
     end
 
     it "should deliver_password_reset_instructions!" do

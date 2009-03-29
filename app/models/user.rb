@@ -3,9 +3,17 @@ class User < ActiveRecord::Base
   acts_as_authorized_user
   acts_as_authorizable
 
-  acts_as_authentic  :login_field_validates_length_of_options => { :within => 5..100 },
-    :password_field_validation_options => { :if => :password_required? },
-    :password_field_validates_length_of_options => { :minimum => 8 }
+# Authlogic version 1.4.x
+#  acts_as_authentic  :login_field_validates_length_of_options => { :within => 5..100 },
+#    :password_field_validation_options => { :if => :password_required? },
+#    :password_field_validates_length_of_options => { :minimum => 8 }
+
+  acts_as_authentic do |c|
+    c.validates_length_of_login_field_options(:within => 5..100)
+    c.validates_length_of_password_field_options(:minimum => 8, :if => :require_password?)
+    c.logged_in_timeout(30.minutes)
+  end
+
 
 #  acts_as_authentic  :validate_login_field => false
 
@@ -81,7 +89,8 @@ class User < ActiveRecord::Base
 #  alias password_required? active?
 #  alias_method :password_required?, :active?
 
-  def password_required?
+#  def password_required?
+  def require_password?
     if self.new_record?
       APP_CONFIG[:auto_activate]
     else

@@ -9,7 +9,8 @@ describe ChangeEmailController do
 
     it "should should render 'new' template  when login" do
       user = User.make
-      set_session_for(user)
+      activate_authlogic
+      UserSession.create(user)
       get 'new'
       assigns(:user).login.should eql(user.login)
       response.flash[:notice].should be_nil
@@ -27,7 +28,8 @@ describe ChangeEmailController do
     describe "after login" do
       before(:each) do
         @user = User.make
-        set_session_for(@user)
+        activate_authlogic
+        UserSession.create(@user)
       end
 
       it "should render 'show' template if new email is valid" do
@@ -83,7 +85,8 @@ describe ChangeEmailController do
 
     it "should should render 'show' template  when login" do
       user = User.make
-      set_session_for(user)
+      activate_authlogic
+      UserSession.create(user)
       get 'show'
       assigns(:user).login.should eql(user.login)
       response.flash[:notice].should be_nil
@@ -101,7 +104,8 @@ describe ChangeEmailController do
     describe "after login" do
       before(:each) do
         @user = User.make
-        set_session_for(@user)
+        activate_authlogic
+        UserSession.create(@user)
         @new_email = 'valid@example.com'
         @request_code = @user.request_changing_email(@new_email)
       end
@@ -137,7 +141,8 @@ describe ChangeEmailController do
     describe "after login" do
       before(:each) do
         @user = User.make
-        set_session_for(@user)
+        activate_authlogic
+        UserSession.create(@user)
         @new_email = 'valid@example.com'
         @request_code = @user.request_changing_email(@new_email)
       end

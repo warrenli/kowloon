@@ -5,7 +5,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'spec'
 require 'spec/rails'
 
-require 'authlogic/testing/test_unit_helpers'
+require "authlogic/test_case"
 require File.join(File.dirname(__FILE__), 'blueprint')
 
 Spec::Runner.configure do |config|

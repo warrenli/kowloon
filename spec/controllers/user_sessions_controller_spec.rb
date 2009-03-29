@@ -57,7 +57,8 @@ describe UserSessionsController do
   describe "responding to DELETE destroy" do
     it "should destroy user session" do
         user = User.make
-        set_session_for(user)
+        activate_authlogic
+        UserSession.create(user)
         post :create, :user_session => { :login => user.login, :password => user.password }
         user_session = UserSession.find
         user_session.should_not be_nil

@@ -82,7 +82,8 @@ describe UsersController do
   describe "responding to GET show" do
     it "should render 'edit' template" do
       user = User.make
-      set_session_for(user)
+      activate_authlogic
+      UserSession.create(user)
       get :show
       assigns(:user).login.should eql(user.login)
       response.should be_success
@@ -99,7 +100,8 @@ describe UsersController do
   describe "responding to GET edit" do
     it "should render 'edit' template'" do
       user = User.make
-      set_session_for(user)
+      activate_authlogic
+      UserSession.create(user)
       get :edit, :id => user.id
       assigns(:user).login.should eql(user.login)
       response.should be_success
@@ -111,7 +113,8 @@ describe UsersController do
     describe "with valid params (login and email)" do
       it "should redirect to 'show' template" do
         user = User.make
-        set_session_for(user)
+        activate_authlogic
+        UserSession.create(user)
         put :update, :id => user.id,
             :user => { :password => 'password', :password_confirmation => 'password' }
         response.should redirect_to(account_url)
@@ -120,7 +123,8 @@ describe UsersController do
     describe "with invalid params" do
       it "should re-render 'edit' template" do
         user = User.make
-        set_session_for(user)
+        activate_authlogic
+        UserSession.create(user)
         put :update, :id => user.id, :user => { :email => '' }
         response.should be_success
         response.should render_template('edit')

@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
 #  def password_required?
   def require_password?
     if self.new_record?
-      APP_CONFIG[:auto_activate]
+      APP_CONFIG[:auto_activate] or self.password
     else
       active?
     end

@@ -11,8 +11,15 @@ zh-HK:
       not_active: "您的帳戶未啟動"
       not_confirmed: "您的帳戶未確認"
       not_approved: "您的帳戶未核準"
-      blank_record: "不可以登入!"
-      new_record: "暫時不可以登入!"
+      no_authentication_details: "您未有輸入帳戶資料"
+    models:
+      user_session: "登入 時段"
+    attributes:
+      user_session:
+        login: "帳戶名稱/電郵"
+        email: "電郵地址"
+        password: "帳戶密碼"
+        remember_me: "Remember Me"
   activerecord:
     errors:
       template:
@@ -70,9 +77,6 @@ zh-HK:
       user:
         one: "帳戶"
         other: "帳戶"
-      "user session":
-        one: "登入 時段"
-        other: "登入 時段"
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
       # For example,

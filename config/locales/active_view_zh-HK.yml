@@ -43,7 +43,6 @@ zh-HK:
     new:
       page_title: "登入"
       login_or_email: "帳戶名稱/電郵地址"
-      password: "帳戶密碼"
       login_button: "登入"
     create:
       success_msg: "成功登入!"

@@ -43,7 +43,6 @@ en-US:
     new:
       page_title: "Login"
       login_or_email: "Login/Email"
-      password: "Password"
       login_button: "Login"
     create:
       success_msg: "Login successful!"

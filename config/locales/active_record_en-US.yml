@@ -11,14 +11,21 @@ en-US:
       not_active: Your account is not active
       not_confirmed: Your account is not confirmed
       not_approved: Your account is not approved
-      blank_record: You can not login with a blank record
-      new_record: You can not login with a new record
+      no_authentication_details: You did not provide any details for authentication.
+    models:
+      user_session: "User Session"
+    attributes:
+      user_session:
+        login: "Login/Email"
+        email: "Email"
+        password: "Password"
+        remember_me: "Remember Me"
   activerecord:
     errors:
       template:
         header:
           one: "{{count}} error prohibited this {{model}} from being saved"
-          other:  "{{count}} errors prohibited this {{model}} from being saved"
+          other: "{{count}} errors prohibited this {{model}} from being saved"
         # The variable :count is also available
         body: "There were problems with the following fields:"
       messages:
@@ -70,9 +77,6 @@ en-US:
       user:
         one: "User"
         other: "Users"
-      "user session":
-        one: "User Session"
-        other: "User Session"
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
       # For example,

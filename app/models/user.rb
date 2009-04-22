@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
     if self.new_record?
       APP_CONFIG[:auto_activate] or self.password
     else
-      active?
+      active? and !self.password.nil?
     end
   end
 

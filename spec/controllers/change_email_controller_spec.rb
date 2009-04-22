@@ -154,6 +154,8 @@ describe ChangeEmailController do
         assigns(:user_email).should_not be_nil
         response.flash[:notice].should_not be_nil
         response.should redirect_to(account_url)
+        @user.reload
+        @user.email.should == @new_email
       end
 
       it "should should redirect to account_url if request code is invalid" do

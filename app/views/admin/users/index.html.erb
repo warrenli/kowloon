@@ -73,12 +73,15 @@ $(document).ready(function($) {
   $('select.per_page').livequery(function() {
     var onchange = $(this).attr('onchange').toString();
     var matches = onchange.match(/window\.location = "(.*)" \+ this/);
-    var url = matches[matches.length - 1];
-    $(this).attr('onchange', null)
-    $(this).change(function() {
-      $('#users').load(url + $(this).val());
-      return false;
-    })
+    var url
+    if (matches) {
+      url = matches[matches.length - 1];
+      $(this).attr('onchange', null)
+      $(this).change(function() {
+        $('#users').load(url + $(this).val());
+        return false;
+      })
+    }
   })
 
   // Change page_links to use ajax

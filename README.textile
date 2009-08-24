@@ -15,11 +15,11 @@ Solve cross-browser CSS problems, simplify layout design
 
 解決有關CSS的跨瀏覽器問題，簡化網頁的編排工作。
 
-h2. Authlogic plugin
+h2. I18n_label plugin
 
-Provide authentication function, can choose login name or email as account identity
+Enable form labels support I18n
 
-設定網站帳戶身份驗證功能，可以選擇以帳戶名稱或電郵地址為帳戶的身份標記。
+允許【label】支援I18N。
 
 h2. Rails-authorization plugin
 
@@ -27,25 +27,25 @@ A powerful authorization tool, support application level, class level and object
 
 一個十分強勁的插件，可以用三層架構處理授權工作。最上層是整個網站的授權，例如'site_admin'可以處理所有管理員的功能，下一層是以【Class】為單位的授權，例如'admin_of_User'可以執行帳戶管理功能，最下一層係按每一個物件【Object】去設定他的權限，例如帳戶'warrenli'可以授權另一個帳戶'klnuser'去管理他的帳戶資料。
 
-h2. Searchlogic plugin
+h2. Authlogic gem
+
+Provide authentication function, can choose login name or email as account identity
+
+設定網站帳戶身份驗證功能，可以選擇以帳戶名稱或電郵地址為帳戶的身份標記。
+
+h2. Searchlogic(v1.6.6) gem
 
 Offer many search features, search results can be viewed using pagination, it also supports AJAX
 
 提供多樣化的搜尋功能，而且搜尋結果支援分頁顯示【pagination】，又可以應用【Ajax】技術。
 
-h2. I18n_label plugin
-
-Enable form labels support I18n
-
-允許【label】支援I18N。
-
-h2. Rails-footnotes plugin
+h2. Rails-footnotes gem
 
 Provide helpful information about cookies, env, filters, params, queries, session, etc.
 
 在應用程式閞發過程中，提供許多資料幫助除錯工作，資料包括︰【cookies】, 【env】, 【filters】, 【params】, 【queries】, 【session】…等等。
 
-h2. Machinist and rspec-on-rails-matchers plugin
+h2. Machinist gem and Shoulda gem
 
 Very helpful testing tools
 

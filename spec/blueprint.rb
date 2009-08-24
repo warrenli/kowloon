@@ -1,3 +1,5 @@
+require 'machinist/active_record'
+require 'sham'
 require 'faker'
 
 Sham.login  { Faker::Name.first_name + Faker::Name.last_name }

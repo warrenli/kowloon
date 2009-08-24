@@ -32,3 +32,7 @@ config.gem 'faker'
 config.gem "rspec", :lib => false, :version => ">=1.2.8"
 config.gem "rspec-rails", :lib => false, :version => ">=1.2.7.1"
 config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
+
+config.gem "webrat", :lib => false, :version => ">=0.5.1"
+config.gem "cucumber", :lib => false, :version => ">=0.3.96"
+config.gem 'bmabey-email_spec', :lib => 'email_spec'

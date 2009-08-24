@@ -1,0 +1,21 @@
+Feature:                            功能:
+  In order to [Business Value]        為了能夠
+  As a [Role]                         作為一名
+  I want [Some Action/Feature]        我要
+
+  Scenario:                         場景|劇本:
+    Given                             假設
+    When                              當
+    Then                              那麼
+    And                               而且
+
+
+  feature                           功能
+  background                        背景
+  scenario                          場景|劇本
+  scenario_outline                  場景大綱|劇本大綱
+  examples                          例子
+  given [context]                   假設
+  when  [action]                    當
+  then  [outcome]                   那麼
+  but   [outcome]                   但是
